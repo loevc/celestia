@@ -1,0 +1,31 @@
+package com.loevc.celestia.admin.controller;
+
+import com.loevc.celestia.admin.service.UserService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @Author Loevc
+ * @Email Loevc1024@gmail.com
+ * @Date 2023/8/15 16:17
+ * @Description TODO
+ * @Version 1.0
+ */
+@Slf4j
+@RestController
+@RequestMapping("/user")
+@AllArgsConstructor
+public class UserController {
+
+    private final UserService userService;
+
+    @GetMapping("/name")
+    public String info(@RequestParam("id") String id){
+        return userService.getNameById(id);
+    }
+
+}
