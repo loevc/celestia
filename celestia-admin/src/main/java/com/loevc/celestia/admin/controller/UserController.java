@@ -1,12 +1,10 @@
 package com.loevc.celestia.admin.controller;
 
+import com.example.celestia.common.entity.User;
 import com.loevc.celestia.admin.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author Loevc
@@ -24,8 +22,13 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/name")
-    public String info(@RequestParam("id") String id){
+    public User info(@RequestParam("id") String id){
         return userService.getNameById(id);
+    }
+    @PostMapping("/add")
+    public Boolean add(@RequestBody User user){
+        System.out.println(user);
+        return userService.addUser(user)==1;
     }
 
 }

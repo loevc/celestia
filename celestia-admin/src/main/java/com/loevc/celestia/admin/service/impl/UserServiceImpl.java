@@ -1,5 +1,6 @@
 package com.loevc.celestia.admin.service.impl;
 
+import com.example.celestia.common.entity.User;
 import com.loevc.celestia.admin.mapper.UserMapper;
 import com.loevc.celestia.admin.service.UserService;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,11 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public String getNameById(String id) {
+    public User getNameById(String id) {
         return userMapper.getNameById(id);
+    }
+    public int addUser(User user){
+        return userMapper.addUser(user);
+
     }
 }

@@ -1,5 +1,7 @@
 package com.loevc.celestia.admin.service;
 
+import com.example.celestia.common.entity.User;
+
 /**
  * @Author Loevc
  * @Email Loevc1024@gmail.com
@@ -8,5 +10,6 @@ package com.loevc.celestia.admin.service;
  * @Version 1.0
  */
 public interface UserService {
-    String getNameById(String id);
+    User getNameById(String id);
+    int addUser(User user);
 }
