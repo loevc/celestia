@@ -14,6 +14,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper {
 
-    @Select("select user.name from user where id = #{id}")
+    @Select("select name from sys_user where id = #{id}")
     String getNameById(@Param("id") String id);
 }
