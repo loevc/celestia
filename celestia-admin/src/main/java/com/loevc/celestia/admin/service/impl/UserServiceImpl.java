@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
     }
     public int addUser(User user){
         return userMapper.addUser(user);
-
     }
+    public int delUser(String id){
+        return userMapper.delUser(id);
+    }
+    public int updataUser(User user){
+        return userMapper.updataUser(user);
+    }
+
 }

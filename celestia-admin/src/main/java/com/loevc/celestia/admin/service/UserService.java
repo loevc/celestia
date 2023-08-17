@@ -12,4 +12,6 @@ import com.example.celestia.common.entity.User;
 public interface UserService {
     User getNameById(String id);
     int addUser(User user);
+    int delUser(String id);
+    int updataUser(User user);
 }
