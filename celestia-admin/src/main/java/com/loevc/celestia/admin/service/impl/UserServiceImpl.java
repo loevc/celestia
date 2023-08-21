@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 /**
  * @Author Loevc
  * @Email Loevc1024@gmail.com
@@ -29,6 +31,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.addUser(user);
     }
     public int delUser(String id){
+        User nameById = getNameById(id);
+        if (Objects.nonNull(nameById)){
+            return 0;
+        }
+
         return userMapper.delUser(id);
     }
     public int updataUser(User user){
