@@ -6,34 +6,16 @@
         <groupId>com.loevc</groupId>
         <artifactId>celestia</artifactId>
         <version>0.0.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <artifactId>celestia-api</artifactId>
     <version>0.0.9-SNAPSHOT</version>
     <name>celestia-api</name>
     <description>celestia-api</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
-
-
-    <repositories>
-        <!-- 设置 jitpack.io 仓库 -->
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <!-- 设置 jitpack.io 插件仓库 -->
-        <pluginRepository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </pluginRepository>
-    </pluginRepositories>
-
-
 
     <dependencies>
         <dependency>
@@ -47,54 +29,18 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- 添加 XJar 依赖 -->
-        <dependency>
-            <groupId>com.github.core-lib</groupId>
-            <artifactId>xjar</artifactId>
-            <version>4.0.2</version>
-            <!-- <scope>test</scope> -->
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.core-lib</groupId>
-                <artifactId>xjar-maven-plugin</artifactId>
-                <version>4.0.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                        <configuration>
-                            <password>io.xjar</password>
-                            <!--                             optional-->
-                            <!--                            <algorithm/>-->
-                            <!--                            <keySize/>-->
-                            <!--                            <ivSize/>-->
-                            <!--                            <includes>-->
-                            <!--                                <include/>-->
-                            <!--                            </includes>-->
-                            <!--                            <excludes>-->
-                            <!--                                <exclude/>-->
-                            <!--                            </excludes>-->
-                            <!--                            <sourceDir/>-->
-                            <!--                            <sourceJar/>-->
-                            <!--                            <targetDir/>-->
-                            <!--                            <targetJar></targetJar>-->
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

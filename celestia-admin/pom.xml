@@ -8,7 +8,6 @@
         <groupId>com.loevc</groupId>
         <artifactId>celestia</artifactId>
         <version>0.0.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>celestia-admin</artifactId>
@@ -20,17 +19,7 @@
         <java.version>17</java.version>
     </properties>
 
-
-    <pluginRepositories>
-        <!-- 设置 jitpack.io 插件仓库 -->
-        <pluginRepository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <dependencies>
-
         <dependency>
             <groupId>com.loevc</groupId>
             <artifactId>celestia-common</artifactId>
@@ -83,10 +72,6 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>2022.0.0.0</version>
         </dependency>
-
-
-
-
     </dependencies>
 
     <build>
@@ -94,37 +79,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.core-lib</groupId>
-                <artifactId>xjar-maven-plugin</artifactId>
-                <version>4.0.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                        <configuration>
-                            <password>io.xjar</password>
-                            <!--                             optional-->
-                            <!--                            <algorithm/>-->
-                            <!--                            <keySize/>-->
-                            <!--                            <ivSize/>-->
-                            <!--                            <includes>-->
-                            <!--                                <include/>-->
-                            <!--                            </includes>-->
-                            <!--                            <excludes>-->
-                            <!--                                <exclude/>-->
-                            <!--                            </excludes>-->
-                            <!--                            <sourceDir/>-->
-                            <!--                            <sourceJar/>-->
-                            <!--                            <targetDir/>-->
-<!--                            <targetJar></targetJar>-->
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
