@@ -1,8 +1,7 @@
 package com.loevc.celestia.admin.mapper;
 
-import com.example.celestia.common.entity.User;
+import com.loevc.celestia.common.entity.User;
 import org.apache.ibatis.annotations.*;
-import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @Author Loevc

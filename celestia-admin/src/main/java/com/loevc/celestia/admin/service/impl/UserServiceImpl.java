@@ -1,6 +1,6 @@
 package com.loevc.celestia.admin.service.impl;
 
-import com.example.celestia.common.entity.User;
+import com.loevc.celestia.common.entity.User;
 import com.loevc.celestia.admin.mapper.UserMapper;
 import com.loevc.celestia.admin.service.UserService;
 import lombok.AllArgsConstructor;

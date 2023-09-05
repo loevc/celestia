@@ -1,4 +1,4 @@
-package com.example.celestia.common.util;
+package com.loevc.celestia.common.util;
 import lombok.Data;
 
 @Data

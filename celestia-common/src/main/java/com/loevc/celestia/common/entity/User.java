@@ -1,4 +1,4 @@
-package com.example.celestia.common.entity;
+package com.loevc.celestia.common.entity;
 
 import lombok.Data;
 

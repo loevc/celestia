@@ -1,6 +1,6 @@
 package com.loevc.celestia.admin.service;
 
-import com.example.celestia.common.entity.User;
+import com.loevc.celestia.common.entity.User;
 
 /**
  * @Author Loevc

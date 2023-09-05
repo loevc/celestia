@@ -1,14 +1,13 @@
 package com.loevc.celestia.admin.controller;
 
-import com.example.celestia.common.entity.User;
-import com.example.celestia.common.util.ApiResponse;
+import com.loevc.celestia.common.entity.User;
+import com.loevc.celestia.common.util.ApiResponse;
 import com.loevc.celestia.admin.service.UserService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 
 /**
  * @Author Loevc
@@ -20,10 +19,13 @@ import java.util.HashMap;
 @Slf4j
 @RestController
 @RequestMapping("/user")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
+
+    @Value("${loevc.name}")
+    private String name;
 
     @GetMapping("/name")
     public ApiResponse info(@RequestParam("id") String id) {
