@@ -24,6 +24,7 @@ public class UserController {
 
     private final UserService userService;
 
+
     @Value("${loevc.name}")
     private String name;
 
