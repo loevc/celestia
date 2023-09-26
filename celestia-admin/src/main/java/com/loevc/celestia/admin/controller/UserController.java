@@ -32,6 +32,7 @@ public class UserController {
         ApiResponse response = new ApiResponse();
         response.setCode(1);
         response.setMessage("");
+        System.out.println(111);
 //        HashMap map = new HashMap();
 //        map.put("user", userService.getNameById(id));
         response.setData(userService.getNameById(id));
