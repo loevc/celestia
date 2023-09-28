@@ -5,19 +5,19 @@ spring:
   application:
     name: celestia-admin
   datasource:
-    url: jdbc:mysql://39.107.113.49:20401/celestia?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://39.107.113.49:3306/celestia?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: tmp_rabbit01
+    username: celestia
+    password: KX3eGtSn56mhdDHh
   cloud:
-    nacos:
-      discovery:
-        server-addr: http://62.234.36.137:49239
-        namespace: 18b20d64-5be2-413c-9dcb-2ffe11b5c80d
-      config:
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
-        namespace: ${spring.cloud.nacos.discovery.namespace}
-        file-extension: yml
+#    nacos:
+#      discovery:
+#        server-addr: http://62.234.36.137:49239
+#        namespace: 18b20d64-5be2-413c-9dcb-2ffe11b5c80d
+#      config:
+#        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+#        namespace: ${spring.cloud.nacos.discoveryspace}
+#        file-extension: yml
   profiles:
     active: dev
 

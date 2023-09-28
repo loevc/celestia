@@ -3,6 +3,7 @@ package com.loevc.celestia.admin.controller;
 import com.loevc.celestia.common.entity.User;
 import com.loevc.celestia.common.util.ApiResponse;
 import com.loevc.celestia.admin.service.UserService;
+import com.loevc.celestia.common.util.ResponseCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,21 +24,16 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+//    @Value("${loevc.name}")
+//    private String name;
 
-    @Value("${loevc.name}")
-    private String name;
-
-    @GetMapping("/name")
-    public ApiResponse info(@RequestParam("id") String id) {
-        ApiResponse response = new ApiResponse();
-        response.setCode(1);
-        response.setMessage("");
-        System.out.println(111);
-//        HashMap map = new HashMap();
-//        map.put("user", userService.getNameById(id));
-        response.setData(userService.getNameById(id));
-
-        return response;
+    @GetMapping("/get")
+    public ApiResponse info(@RequestParam("id") int id) {
+//        ApiResponse response = new ApiResponse();
+//        return response.returnApiResponse(ResponseCode.SUCCESS.getCode(), "好了", null);
+        return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "好了", null);
+//
+//        return userService.getNameById(id);
     }
 
     @PostMapping("/add")
@@ -47,7 +43,7 @@ public class UserController {
     }
 
     @GetMapping("/del")
-    public Boolean del(@RequestParam(value = "id") String id) {
+    public Boolean del(@RequestParam(value = "id") int id) {
         return userService.delUser(id) == 1;
     }
 

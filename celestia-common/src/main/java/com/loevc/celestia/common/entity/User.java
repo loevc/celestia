@@ -2,14 +2,16 @@ package com.loevc.celestia.common.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class User {
-
-    private String id;
-
-    private String name;
-
-    private Integer age;
+    private int id;
+    private String username;
+    private String gender;
+    private Date birthday;
+    private String avatar;
+    private Date createTime;
 
 }
 

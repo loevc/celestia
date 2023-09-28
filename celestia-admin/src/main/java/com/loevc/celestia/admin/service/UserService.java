@@ -10,8 +10,8 @@ import com.loevc.celestia.common.entity.User;
  * @Version 1.0
  */
 public interface UserService {
-    User getNameById(String id);
+    User getNameById(int id);
     int addUser(User user);
-    int delUser(String id);
+    int delUser(int id);
     int updataUser(User user);
 }

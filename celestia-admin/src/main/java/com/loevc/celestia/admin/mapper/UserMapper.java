@@ -13,14 +13,14 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface UserMapper {
 
-    @Select("select name from sys_user where id = #{id}")
-    User getNameById(@Param("id") String id);
+    @Select("select * from sys_user where id = #{id}")
+    User getNameById(@Param("id") int id);
 
     @Insert("INSERT INTO sys_user (id, name, age) VALUES (#{user.id}, #{user.name}, #{user.age})")
     int addUser(@Param("user") User user);
 
     @Delete("delete FROM sys_user where id = #{id}")
-    int delUser(@Param("id") String id);
+    int delUser(@Param("id") int id);
     @Update("UPDATE sys_user set name = #{user.name},age = #{user.age} where id = #{user.id}")
     int updataUser(@Param("user") User user);
 }
