@@ -21,9 +21,7 @@ public class ApiResponse<T> {
     }
 
     public static <T> ApiResponse restResult(int code, String msg, T data) {
-        ApiResponse<T> apiResult = new ApiResponse();
-        apiResult.setCode(code);
-        apiResult.setData(data);
+        ApiResponse<T> apiResult = new ApiResponse(code, msg, data);
         return apiResult;
     }
 }

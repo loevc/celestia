@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
+
 /**
  * @Author Loevc
  * @Email Loevc1024@gmail.com
@@ -29,11 +31,12 @@ public class UserController {
 
     @GetMapping("/get")
     public ApiResponse info(@RequestParam("id") int id) {
-//        ApiResponse response = new ApiResponse();
-//        return response.returnApiResponse(ResponseCode.SUCCESS.getCode(), "好了", null);
-        return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "好了", null);
-//
-//        return userService.getNameById(id);
+        User userObj = userService.getNameById(id);
+        if (Objects.isNull(userObj)) {
+            return ApiResponse.restResult(ResponseCode.Fail.getCode(), "没有此用户", null);
+        } else {
+            return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "", userObj);
+        }
     }
 
     @PostMapping("/add")
