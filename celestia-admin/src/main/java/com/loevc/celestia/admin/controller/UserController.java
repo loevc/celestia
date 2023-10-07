@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -31,12 +33,15 @@ public class UserController {
 
     @GetMapping("/get")
     public ApiResponse info(@RequestParam("id") int id) {
-        User userObj = userService.getNameById(id);
-        if (Objects.isNull(userObj)) {
-            return ApiResponse.restResult(ResponseCode.Fail.getCode(), "没有此用户", null);
-        } else {
-            return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "", userObj);
-        }
+        log.info("哈哈哈");
+        return ApiResponse.restResult(ResponseCode.Fail.getCode(), "没有此用户", new User(1, "张二狗", 1, new Date(), "https://", new Date()));
+
+//        User userObj = userService.getNameById(id);
+//        if (Objects.isNull(userObj)) {
+//            return ApiResponse.restResult(ResponseCode.Fail.getCode(), "没有此用户", null);
+//        } else {
+//            return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "", userObj);
+//        }
     }
 
     @PostMapping("/add")
