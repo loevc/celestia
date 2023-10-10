@@ -6,12 +6,9 @@ import com.loevc.celestia.admin.service.UserService;
 import com.loevc.celestia.common.util.ResponseCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -25,23 +22,24 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+
 public class UserController {
 
     private final UserService userService;
-//    @Value("${loevc.name}")
+
+    //    @Value("${loevc.name}")
 //    private String name;
 
-    @GetMapping("/get")
-    public ApiResponse info(@RequestParam("id") int id) {
-        log.info("哈哈哈");
-        return ApiResponse.restResult(ResponseCode.Fail.getCode(), "没有此用户", new User(1, "张二狗", 1, new Date(), "https://", new Date()));
 
-//        User userObj = userService.getNameById(id);
-//        if (Objects.isNull(userObj)) {
-//            return ApiResponse.restResult(ResponseCode.Fail.getCode(), "没有此用户", null);
-//        } else {
-//            return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "", userObj);
-//        }
+    @GetMapping("/get")
+    public ApiResponse info(@RequestParam("id") String id) {
+        User userObj = userService.getNameById(id);
+        System.out.println(userObj);
+        if (Objects.isNull(userObj)) {
+            return ApiResponse.restResult(ResponseCode.Fail.getCode(), "没有此用户", null);
+        } else {
+            return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "", userObj);
+        }
     }
 
     @PostMapping("/add")
@@ -51,7 +49,7 @@ public class UserController {
     }
 
     @GetMapping("/del")
-    public Boolean del(@RequestParam(value = "id") int id) {
+    public Boolean del(@RequestParam(value = "id") String id) {
         return userService.delUser(id) == 1;
     }
 

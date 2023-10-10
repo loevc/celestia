@@ -24,13 +24,13 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public User getNameById(int id) {
+    public User getNameById(String id) {
         return userMapper.getNameById(id);
     }
     public int addUser(User user){
         return userMapper.addUser(user);
     }
-    public int delUser(int id){
+    public int delUser(String id){
         User nameById = getNameById(id);
         if (Objects.nonNull(nameById)){
             return 0;

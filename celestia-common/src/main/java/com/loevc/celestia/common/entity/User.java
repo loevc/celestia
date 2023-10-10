@@ -1,19 +1,22 @@
 package com.loevc.celestia.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 public class User {
-    private int id;
+    private String id;
     private String username;
-    private int gender;
-    private Date birthday;
+    private String gender;
     private String avatar;
-    private Date createTime;
+    private String email;
+    private String password;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createtime;
 
 }
 
