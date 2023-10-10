@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * @Description TODO
  * @Version 1.0
  */
-@Slf4j
+@Slf4j // spring-boot-starter 中包含了一个 logback 实现
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
