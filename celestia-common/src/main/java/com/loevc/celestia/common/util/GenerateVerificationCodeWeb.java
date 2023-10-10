@@ -16,11 +16,10 @@ import org.thymeleaf.context.Context;
 @Data
 @AllArgsConstructor
 public class GenerateVerificationCodeWeb {
-    private final TemplateEngine templateEngine;
-
-    public String createVerificationCodeEmailContent(String verificationCode) {
+    public static String createVerificationCodeEmailContent(String verificationCode) {
         Context context = new Context();
         context.setVariable("verificationCode", verificationCode);
+        TemplateEngine templateEngine = new TemplateEngine();
         return templateEngine.process("email-template", context);
     }
 }

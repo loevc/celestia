@@ -1,6 +1,8 @@
 package com.loevc.celestia.admin.controller;
 
 import com.loevc.celestia.admin.controller.dto.RegisterDto;
+import com.loevc.celestia.admin.service.EmailService;
+import com.loevc.celestia.admin.service.RedisService;
 import com.loevc.celestia.admin.service.impl.EmailServiceImpl;
 import com.loevc.celestia.admin.service.impl.RedisServiceImpl;
 import com.loevc.celestia.common.util.ApiResponse;
@@ -26,9 +28,8 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/registerLogin")
 @RequiredArgsConstructor
 public class RegisterLogin {
-    private final RedisServiceImpl redisServiceImpl;
-    private final EmailServiceImpl emailServiceImpl;
-    private final GenerateVerificationCodeWeb generateVerificationCodeWeb;
+    private final RedisService RedisService;
+    private final EmailService EmailService;
 
     @GetMapping("/sendCode")
     public ApiResponse sendCode(@RequestParam(value = "email", required = false) String email) {
@@ -36,9 +37,9 @@ public class RegisterLogin {
             return ApiResponse.restResult(ResponseCode.Fail.getCode(), "请传Email", null);
         } else {
             String s = GenerateRandomDigitUtil.getSixDigitVerifyCode();
-            String htmlContent = generateVerificationCodeWeb.createVerificationCodeEmailContent(s);
-            emailServiceImpl.sendEmail(email, "邮箱验证码", htmlContent);
-            redisServiceImpl.setValueWithTTL(email, s, 60 * 5, TimeUnit.SECONDS);
+            String htmlContent = GenerateVerificationCodeWeb.createVerificationCodeEmailContent(s);
+            EmailService.sendEmail(email, "邮箱验证码", htmlContent);
+            RedisService.setValueWithTTL(email, s, 60 * 5, TimeUnit.SECONDS);
             return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "发送成功,有效期5分钟！", null);
         }
     }
