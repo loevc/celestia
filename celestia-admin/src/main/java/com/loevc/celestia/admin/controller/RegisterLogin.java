@@ -45,8 +45,9 @@ public class RegisterLogin {
     }
 
     @PostMapping("/register")
-    public ApiResponse register(@RequestBody() @Valid RegisterDto registerDto) {
+    public ApiResponse register(@RequestBody @Valid RegisterDto registerDto) {
         log.info(registerDto.toString());
+
         return ApiResponse.restResult(ResponseCode.SUCCESS.getCode(), "注册成功", null);
     }
 

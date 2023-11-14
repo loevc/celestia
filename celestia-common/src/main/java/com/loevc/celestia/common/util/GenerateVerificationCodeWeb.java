@@ -3,6 +3,8 @@ package com.loevc.celestia.common.util;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -14,6 +16,7 @@ import org.thymeleaf.context.Context;
  * @Version 1.0
  */
 @Data
+@Component
 @AllArgsConstructor
 public class GenerateVerificationCodeWeb {
     public static String createVerificationCodeEmailContent(String verificationCode) {

@@ -22,13 +22,11 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
-
 public class UserController {
 
     private final UserService userService;
 
     //    @Value("${loevc.name}")
-//    private String name;
 
 
     @GetMapping("/get")
