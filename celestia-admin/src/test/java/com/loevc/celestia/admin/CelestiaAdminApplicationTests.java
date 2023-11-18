@@ -5,14 +5,16 @@ import com.loevc.celestia.admin.factory.logistics.Logistics;
 import com.loevc.celestia.admin.factory.logistics.LogisticsFactory;
 import com.loevc.celestia.admin.factory.logistics.RoadLogistics;
 import com.loevc.celestia.admin.factory.strategy.LogisticsStrategyFactory;
+import com.loevc.celestia.admin.pipeline.context.goodsinfo.GoodsInfoContext;
+import com.loevc.celestia.admin.pipeline.context.orderinfo.OrderInfoContext;
+import com.loevc.celestia.admin.pipeline.PipelineExecutor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 @SpringBootTest
@@ -21,6 +23,16 @@ class CelestiaAdminApplicationTests {
     @Test
     void contextLoads() {
     }
+
+
+    @Autowired // 不能使用 private final 的全参构造， 在测试启动类中无法启动
+    private PipelineExecutor pipelineExecutor;
+
+    @Test
+    void testPipeline(){
+        pipelineExecutor.acceptSync(new GoodsInfoContext());
+    }
+
 
 
     @Test
