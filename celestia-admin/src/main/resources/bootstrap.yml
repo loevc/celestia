@@ -1,0 +1,23 @@
+server:
+  port: 6101
+management:
+  server:
+    port: 16101
+spring:
+  application:
+    name: @artifactId@
+  #配置中心
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://10.20.0.3:30048
+        namespace:
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-configs:
+          - data-id: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            refresh: true
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+  profiles:
+    active: celestia-local
