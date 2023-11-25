@@ -1,8 +1,8 @@
 server:
-  port: 6101
+  port: 6104
 management:
   server:
-    port: 16101
+    port: 16104
 spring:
   application:
     name: @artifactId@

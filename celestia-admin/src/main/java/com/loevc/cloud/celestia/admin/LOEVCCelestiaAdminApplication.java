@@ -17,7 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LOEVCCelestiaAdminApplication {
 
     public static void main(String[] args) {
+//        System.setProperty("nacos.logging.default.config.enabled", "false");
         SpringApplication.run(LOEVCCelestiaAdminApplication.class, args);
-        log.info("service is running ");
+        log.info("\n<celestia admin>   \nservice \nis  \nrunning ");
     }
 }
