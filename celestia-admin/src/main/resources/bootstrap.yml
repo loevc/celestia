@@ -19,6 +19,8 @@ spring:
           - data-id: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             refresh: true
         namespace: ${spring.cloud.nacos.discovery.namespace}
+    compatibility-verifier:
+      enabled: false
   profiles:
     active: celestia
 
@@ -28,3 +30,11 @@ spring:
     username: dev
     password: hexiaoqiang
     virtual-host: celestia
+
+#logging:
+#  level:
+#    org.springframework.cloud.sleuth: debug
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
