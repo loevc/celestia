@@ -31,6 +31,7 @@
         <mybatis-spring-boot-starter.version>2.3.0</mybatis-spring-boot-starter.version>
         <weixin-java.version>4.5.0</weixin-java.version>
         <spring-boot-starter-amqp.version>3.0.12</spring-boot-starter-amqp.version>
+        <spring-cloud-context.version>3.0.6</spring-cloud-context.version>
     </properties>
 
     <modules>
@@ -64,6 +65,17 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-starter-web.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-undertow</artifactId>
                 <version>${spring-boot-starter-web.version}</version>
             </dependency>
             <dependency>
@@ -142,6 +154,11 @@
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-tracing-bridge-brave</artifactId>
                 <version>${micrometer-tracing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-context</artifactId>
+                <version>${spring-cloud-context.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

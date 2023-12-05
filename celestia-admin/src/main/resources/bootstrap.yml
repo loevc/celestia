@@ -1,5 +1,9 @@
 server:
   port: 6101
+  undertow:
+    threads:
+      io: 2
+      worker: 8
 management:
   server:
     port: 16101

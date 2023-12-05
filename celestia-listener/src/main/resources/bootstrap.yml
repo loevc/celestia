@@ -28,3 +28,5 @@ spring:
     username: dev
     password: hexiaoqiang
     virtual-host: celestia
+    publisher-confirm-type: correlated
+    publisher-returns: true

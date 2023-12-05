@@ -3,6 +3,7 @@ package com.loevc.cloud.celestia.admin;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @Author Loevc
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
 @SpringBootApplication
+@ComponentScan(basePackages = "com.loevc.cloud") // 当需要访问common模块下的Bean时 尤其注意
 public class LOEVCCelestiaAdminApplication {
 
     public static void main(String[] args) {
