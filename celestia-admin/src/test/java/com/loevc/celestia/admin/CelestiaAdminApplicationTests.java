@@ -1,5 +1,12 @@
 package com.loevc.celestia.admin;
 
+import com.loevc.celestia.admin.bridge.action.Black;
+import com.loevc.celestia.admin.bridge.action.Color;
+import com.loevc.celestia.admin.bridge.action.White;
+import com.loevc.celestia.admin.bridge.substance.Circle;
+import com.loevc.celestia.admin.bridge.substance.Rectangle;
+import com.loevc.celestia.admin.bridge.substance.Shape;
+import com.loevc.celestia.admin.bridge.substance.Square;
 import com.loevc.celestia.admin.factory.enums.FactoryEnum;
 import com.loevc.celestia.admin.factory.logistics.Logistics;
 import com.loevc.celestia.admin.factory.logistics.LogisticsFactory;
@@ -22,6 +29,16 @@ class CelestiaAdminApplicationTests {
 
     @Test
     void contextLoads() {
+    }
+
+
+    @Test
+    void testBridge(){
+        Color color = new Black();
+        Shape shape = new Square();
+
+        shape.setColor(color);
+        shape.draw();
     }
 
 

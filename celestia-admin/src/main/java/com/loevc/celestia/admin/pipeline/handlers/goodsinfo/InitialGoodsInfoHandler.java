@@ -23,13 +23,13 @@ public class InitialGoodsInfoHandler implements ContextHandler<GoodsInfoContext>
     @Override
     public boolean handle(GoodsInfoContext context) {
         log.info("exec goods info initial --> ");
-        if (){
+   /*     if (){
 
             return true;
         }else {
 
             return false;
-        }
+        }*/
         return true;
     }
 }
