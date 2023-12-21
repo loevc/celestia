@@ -1,7 +1,9 @@
 package com.loevc.cloud.celestia.admin;
 
+import com.loevc.cloud.celestia.admin.service.MongodbOperateService;
 import com.loevc.cloud.celestia.admin.service.Provider;
 import com.loevc.cloud.celestia.common.constant.RabbitMqConstants;
+import com.loevc.cloud.celestia.common.entity.UserInfo;
 import com.loevc.cloud.celestia.common.rabbitmq.RabbitMqConnectionFactory;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.ConnectionFactory;
@@ -12,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StopWatch;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -34,6 +38,30 @@ public class LOEVCCelestiaAdminApplicationTest {
 
     @Autowired
     private ConnectionFactory rabbitMqFactory;
+
+
+    @Autowired
+    private MongodbOperateService mongodbOperateService;
+
+
+    @Test
+    void testMongo(){
+        Object obj = mongodbOperateService.saveObj(new UserInfo() {{
+            setId("133");
+            setFirstName("bbbbb");
+            setEmail("333");
+        }}, "celestia");
+        log.info("{}", obj);
+    }
+
+
+    @Test
+    void testMapNull(){
+        Map<String, String> map = new HashMap<>();
+        map.put(null, "null");
+        System.out.println(map.containsKey(null));
+        System.out.println("aaaaa");
+    }
 
     @Test
     void testMq() throws IOException, TimeoutException {

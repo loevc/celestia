@@ -197,6 +197,9 @@
                     <artifactId>maven-resources-plugin</artifactId>
                     <configuration>
                         <encoding>utf-8</encoding>
+                        <delimiters>
+                            <delimiter>@</delimiter>
+                        </delimiters>
                         <useDefaultDelimiters>true</useDefaultDelimiters>
                     </configuration>
                 </plugin>

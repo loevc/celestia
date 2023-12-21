@@ -27,6 +27,10 @@ spring:
       enabled: false
   profiles:
     active: celestia
+  data:
+    mongodb:
+      uri: mongodb://10.20.0.3:30002/celestia
+      auto-index-creation: true
 
   rabbitmq:
     addresses: 10.20.0.3
