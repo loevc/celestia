@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @Slf4j
 @SpringBootApplication
-@ComponentScan(basePackages = "com.loevc.cloud") // 当需要访问common模块下的Bean时 尤其注意
+@ComponentScan(basePackages = {"com.loevc.cloud", "com.loevc.cloud.celestia.admin.liteflow"}) // 当需要访问common模块下的Bean时 尤其注意
 public class LOEVCCelestiaAdminApplication {
 
     public static void main(String[] args) {

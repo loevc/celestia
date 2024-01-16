@@ -7,12 +7,15 @@ import com.loevc.cloud.celestia.common.entity.UserInfo;
 import com.loevc.cloud.celestia.common.rabbitmq.RabbitMqConnectionFactory;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.ConnectionFactory;
+import com.yomahub.liteflow.core.FlowExecutor;
+import com.yomahub.liteflow.flow.LiteflowResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StopWatch;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +41,14 @@ public class LOEVCCelestiaAdminApplicationTest {
 
     @Autowired
     private ConnectionFactory rabbitMqFactory;
+
+    @Resource
+    private FlowExecutor flowExecutor;
+
+    @Test
+    void testRuleConfig(){
+        LiteflowResponse liteflowResponse = flowExecutor.execute2Resp("chain1", "args");
+    }
 
 
     @Autowired
