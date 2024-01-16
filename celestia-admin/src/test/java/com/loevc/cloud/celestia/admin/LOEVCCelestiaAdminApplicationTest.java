@@ -1,5 +1,7 @@
 package com.loevc.cloud.celestia.admin;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.json.JSONUtil;
 import com.loevc.cloud.celestia.admin.service.MongodbOperateService;
 import com.loevc.cloud.celestia.admin.service.Provider;
 import com.loevc.cloud.celestia.common.constant.RabbitMqConstants;
@@ -14,9 +16,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StopWatch;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 /**
  * @Author Loevc
@@ -42,6 +49,51 @@ public class LOEVCCelestiaAdminApplicationTest {
 
     @Autowired
     private MongodbOperateService mongodbOperateService;
+
+    private static final int SCALE = 63;
+
+
+    @Test
+    void testBitGroup() {
+        List<Integer> locs = Arrays.asList(1, 62, 63, 64, 65, 126, 127, 128);
+        Map<Integer, List<Integer>> resMap = locs.stream()
+                .collect(Collectors.groupingBy(loc -> (loc-1) / SCALE));
+        log.info("{}", resMap);
+        log.info("{}", JSONUtil.toJsonStr(resMap.keySet().stream().map(k -> k + 1).sorted().collect(Collectors.toList())));
+        resMap.keySet().forEach(key -> {
+            List<Integer> locations = resMap.get(key);
+            if (CollUtil.isNotEmpty(locations)) {
+                String fieldName = "applySceneV" + (key + 1);
+                log.info("{}", fieldName);
+                AtomicReference<Long> longVal = new AtomicReference<>(0L);
+                log.info("locations ?   {}", locations);
+                BigDecimal bigDecimal = new BigDecimal(0);
+                for (Integer location : locations) {
+                    log.info("location :  {}", location);
+                    BigDecimal augend = new BigDecimal(1L << (location - 1) % SCALE);
+                    log.info("augend : {}", augend);
+                    bigDecimal.add(augend);
+                }
+                log.info("{}", bigDecimal);
+                locations.forEach(location -> longVal.updateAndGet(v -> v | 1L << (location - 1) % SCALE));
+                log.info("lonVal : {}", longVal.get());
+            }
+        });
+    }
+
+    @Test
+    void testLongBit(){
+        long l = 0L;
+        for (int i = 0; i < 65 ; ++i){
+            if (i < 63){
+                l += 1L << i;
+            }
+            log.info("left move : {}  res:  {}", i,  1L << i);
+        }
+            log.info(" {}", l);
+            log.info(" {}", l + 1);
+            log.info(" {}", SCALE | 1);
+    }
 
 
     @Test
