@@ -142,6 +142,27 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.drools/drools-compiler -->
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <version>8.32.0.Final</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.drools/drools-mvel -->
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-mvel</artifactId>
+            <version>8.32.0.Final</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.drools/drools-xml-support -->
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-xml-support</artifactId>
+            <version>8.32.0.Final</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>

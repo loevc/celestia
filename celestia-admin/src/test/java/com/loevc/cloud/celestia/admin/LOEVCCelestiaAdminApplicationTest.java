@@ -2,6 +2,7 @@ package com.loevc.cloud.celestia.admin;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.json.JSONUtil;
+import com.loevc.cloud.celestia.admin.drools.entity.Order;
 import com.loevc.cloud.celestia.admin.service.MongodbOperateService;
 import com.loevc.cloud.celestia.admin.service.Provider;
 import com.loevc.cloud.celestia.common.constant.RabbitMqConstants;
@@ -11,6 +12,9 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.ConnectionFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.kie.api.KieServices;
+import org.kie.api.runtime.KieContainer;
+import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StopWatch;
@@ -51,6 +55,84 @@ public class LOEVCCelestiaAdminApplicationTest {
     private MongodbOperateService mongodbOperateService;
 
     private static final int SCALE = 63;
+
+
+    @Test
+    void testOrder(){
+        KieServices kieServices = KieServices.Factory.get();
+        // 获取Kie容器对象 默认容器对象
+        KieContainer kieContainer = kieServices.newKieClasspathContainer();
+        // 从Kie容器对象中获取会话对象（默认session对象
+        KieSession kieSession = kieContainer.newKieSession();
+
+        Order order = new Order();
+        order.setOriginalPrice(BigDecimal.valueOf(180));
+        // 将order对象插入工作内存
+        kieSession.insert(order);
+        // 匹配对象
+        // 激活规则，由drools框架自动进行规则匹配。若匹配成功，则执行
+        kieSession.fireAllRules();
+        log.info("优惠前价格：{} ,优惠后价格：{}" , order.getOriginalPrice(), order.getRealPrice());
+
+        kieSession = kieContainer.newKieSession();
+        order.setOriginalPrice(BigDecimal.valueOf(300));
+        // 将order对象插入工作内存
+        kieSession.insert(order);
+        // 匹配对象
+        // 激活规则，由drools框架自动进行规则匹配。若匹配成功，则执行
+        kieSession.fireAllRules();
+        log.info("优惠前价格：{} ,优惠后价格：{}" , order.getOriginalPrice(), order.getRealPrice());
+
+        kieSession = kieContainer.newKieSession();
+        order.setOriginalPrice(BigDecimal.valueOf(600));
+        // 将order对象插入工作内存
+        kieSession.insert(order);
+        // 匹配对象
+        // 激活规则，由drools框架自动进行规则匹配。若匹配成功，则执行
+        kieSession.fireAllRules();
+        log.info("优惠前价格：{} ,优惠后价格：{}" , order.getOriginalPrice(), order.getRealPrice());
+
+        kieSession = kieContainer.newKieSession();
+        order.setOriginalPrice(BigDecimal.valueOf(1200));
+        // 将order对象插入工作内存
+        kieSession.insert(order);
+        // 匹配对象
+        // 激活规则，由drools框架自动进行规则匹配。若匹配成功，则执行
+        kieSession.fireAllRules();
+        log.info("优惠前价格：{} ,优惠后价格：{}" , order.getOriginalPrice(), order.getRealPrice());
+
+        kieSession = kieContainer.newKieSession();
+        order.setOriginalPrice(BigDecimal.valueOf(3000));
+        // 将order对象插入工作内存
+        kieSession.insert(order);
+        // 匹配对象
+        // 激活规则，由drools框架自动进行规则匹配。若匹配成功，则执行
+        kieSession.fireAllRules();
+        log.info("优惠前价格：{} ,优惠后价格：{}" , order.getOriginalPrice(), order.getRealPrice());
+
+        kieSession = kieContainer.newKieSession();
+        order.setOriginalPrice(BigDecimal.valueOf(8000));
+        // 将order对象插入工作内存
+        kieSession.insert(order);
+        // 匹配对象
+        // 激活规则，由drools框架自动进行规则匹配。若匹配成功，则执行
+        kieSession.fireAllRules();
+        log.info("优惠前价格：{} ,优惠后价格：{}" , order.getOriginalPrice(), order.getRealPrice());
+
+        kieSession = kieContainer.newKieSession();
+        order.setOriginalPrice(BigDecimal.valueOf(12000));
+        // 将order对象插入工作内存
+        kieSession.insert(order);
+        // 匹配对象
+        // 激活规则，由drools框架自动进行规则匹配。若匹配成功，则执行
+        kieSession.fireAllRules();
+        log.info("优惠前价格：{} ,优惠后价格：{}" , order.getOriginalPrice(), order.getRealPrice());
+
+
+
+        // 关闭会话
+        kieSession.dispose();
+    }
 
 
     @Test
