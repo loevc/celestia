@@ -31,6 +31,11 @@ spring:
     mongodb:
       uri: mongodb://10.20.0.3:30002/celestia
       auto-index-creation: true
+    redis:
+      host: 10.20.0.3
+      port: 30003
+      password: gr95ZKkSbuh7YWWUfm
+      database: 6
 
   rabbitmq:
     addresses: 10.20.0.3

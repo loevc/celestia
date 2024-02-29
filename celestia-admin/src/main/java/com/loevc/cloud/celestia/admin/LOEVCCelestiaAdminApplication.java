@@ -20,7 +20,9 @@ public class LOEVCCelestiaAdminApplication {
 
     public static void main(String[] args) {
 //        System.setProperty("nacos.logging.default.config.enabled", "false");
+        long start = System.currentTimeMillis();
         SpringApplication.run(LOEVCCelestiaAdminApplication.class, args);
-        log.info("\n<celestia admin>   \nservice \nis  \nrunning ");
+        long end = System.currentTimeMillis();
+        log.error("\n<celestia admin>   \nservice \nis  \nrunning  \nstarted duration:  {}s", (end - start)/1000);
     }
 }

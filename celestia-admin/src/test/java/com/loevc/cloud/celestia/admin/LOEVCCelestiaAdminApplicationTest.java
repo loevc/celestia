@@ -1,5 +1,6 @@
 package com.loevc.cloud.celestia.admin;
 
+import cn.hutool.json.JSONUtil;
 import com.loevc.cloud.celestia.admin.service.MongodbOperateService;
 import com.loevc.cloud.celestia.admin.service.Provider;
 import com.loevc.cloud.celestia.common.constant.RabbitMqConstants;
@@ -10,6 +11,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StopWatch;
 
@@ -52,6 +54,35 @@ public class LOEVCCelestiaAdminApplicationTest {
             setEmail("333");
         }}, "celestia");
         log.info("{}", obj);
+    }
+
+    @Value("${boolean:true}")
+    private Boolean aBoolean;
+
+    @Value("${boolean2:true}")
+    private boolean aBoolean2;
+
+    @Test
+    void testValue(){
+        log.info("{}", aBoolean);
+        log.info("{}", aBoolean2);
+    }
+
+
+    @Test
+    void testGenerate(){
+        System.err.println(generateExpr());
+    }
+
+    private String generateExpr() {
+        return JSONUtil.toJsonStr(new HashMap<String, String>() {{
+            put("x<360", "0");
+            put("x>=360&&x<393", "5");
+            put("x>=393&&x<423", "10");
+            put("x>=423&&x<453", "15");
+            put("x>=453&&x<480", "20");
+            put("x>=480", "20");
+        }});
     }
 
 

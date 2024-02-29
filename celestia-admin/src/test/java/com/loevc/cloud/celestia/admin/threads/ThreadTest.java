@@ -3,6 +3,9 @@ package com.loevc.cloud.celestia.admin.threads;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * @Author Loevc
@@ -15,6 +18,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Slf4j
 @SpringBootTest
 public class ThreadTest {
+
+    @Resource
+    @SuppressWarnings("raw")
+    private RedisTemplate redisTemplate;
 
     @Test
     void test1(){
