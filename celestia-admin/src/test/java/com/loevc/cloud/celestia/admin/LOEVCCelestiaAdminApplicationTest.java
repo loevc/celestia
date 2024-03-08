@@ -16,7 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StopWatch;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
@@ -83,6 +85,86 @@ public class LOEVCCelestiaAdminApplicationTest {
             put("x>=453&&x<480", "20");
             put("x>=480", "20");
         }});
+    }
+
+    @Test
+    void testString(){
+        String a = "Ireland";
+        String b = new String("IreIand");
+        String c = new String("lreland").intern();
+        String d = new String("lreIand").intern();
+        System.out.println("a == b: " + (a == b) + ", c == d: " + (c == d));
+    }
+
+
+    static class A{}
+    static class B extends A{}
+    static class C extends B{}
+    static class D extends C{}
+    static class E extends D{}
+    static class F extends E{}
+    static class G extends F{}
+
+    static class Example<T>{}
+    @Test
+    void testGenerateType(){
+        {
+            Example<? extends A> testAA = new Example<A>();
+            Example<? extends A> testAB = new Example<B>();
+            Example<? extends A> testAC = new Example<C>();
+//            Example<? extends B> testBA = new Example<A>();
+            Example<? extends B> testBB = new Example<B>();
+            Example<? extends B> testBC = new Example<C>();
+//            Example<? extends C> testCA = new Example<A>();
+//            Example<? extends C> testCB = new Example<B>();
+            Example<? extends C> testCC = new Example<C>();
+        }
+        {
+            Example<? super A> testAA = new Example<A>();
+//            Example<? super A> testAB = new Example<B>();
+//            Example<? super A> testAC = new Example<C>();
+            Example<? super B> testBA = new Example<A>();
+            Example<? super B> testBB = new Example<B>();
+//            Example<? super B> testBC = new Example<C>();
+            Example<? super C> testCA = new Example<A>();
+            Example<? super C> testCB = new Example<B>();
+            Example<? super C> testCC = new Example<C>();
+        }
+
+        List<? extends D> extendsD = new ArrayList<>();
+        List<? super D> superD = new ArrayList<>();
+
+//        superD.add(new A());
+//        superD.add(new B());
+//        superD.add(new C());
+        superD.add(new D());
+        superD.add(new E());
+        superD.add(new F());
+        superD.add(new G());
+
+//        extendsD.add(new G());
+//        extendsD.add(new F());
+//        extendsD.add(new E());
+//        extendsD.add(new D());
+//        extendsD.add(new C());
+//        extendsD.add(new B());
+//        extendsD.add(new A());
+
+//        A superDA = superD.get(0);
+//        B superDB = superD.get(0);
+//        C superDC = superD.get(0);
+//        D superDD = superD.get(0);
+//        E superDE = superD.get(0);
+//        F superDF = superD.get(0);
+//        G superDG = superD.get(0);
+
+//        G extendsDG = extendsD.get(0);
+//        F extendsDF = extendsD.get(0);
+//        E extendsDE = extendsD.get(0);
+        D extendsDD = extendsD.get(0);
+        C extendsDC = extendsD.get(0);
+        B extendsDB = extendsD.get(0);
+        A extendsDA = extendsD.get(0);
     }
 
 
